@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="linlin.com.fragmentdemo.MainActivity">
@@ -8,8 +9,20 @@
     <FrameLayout
         android:id="@+id/my_framelayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
     </FrameLayout>
 
-</RelativeLayout>
+    <!--静态加载方式-->
+    <!--android:name 指定在layout中实例化的Fragment类，需要为“包名.类名”的完整形式-->
+    <!--唯一标识，id和tag可任选其一，不可两者都没有-->
+    <!--android:id-->
+    <!--android:tag-->
+    <fragment
+        android:id="@+id/fragment"
+        android:tag="myfirstfragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="linlin.com.fragmentdemo.My_Fragment"/>
+
+</LinearLayout>
