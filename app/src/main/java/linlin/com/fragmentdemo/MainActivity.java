@@ -5,9 +5,10 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyFragment.SendData{
     private My_Fragment my_fragment;
     private MyFragment myfragment;
     @Override
@@ -34,5 +35,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"dianjiale ",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    //实现SendData接口，接收数据
+    @Override
+    public void sendMsg(String str) {
+        ((TextView)findViewById(R.id.mytextview)).setText(str);
+//        Toast.makeText(this, "成功接收\"" + str + "\"", Toast.LENGTH_SHORT).show();
     }
 }
