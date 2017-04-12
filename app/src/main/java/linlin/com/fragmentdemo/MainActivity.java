@@ -9,22 +9,28 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private My_Fragment my_fragment;
+    private MyFragment myfragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FragmentManager manager = getFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        if (my_fragment == null) {
-            my_fragment = new My_Fragment();
-        }
-        transaction.add(R.id.my_framelayout, my_fragment);
-        transaction.show(my_fragment);
-        transaction.commit();
         findViewById(R.id.mybutton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                if (myfragment == null) {
+                    myfragment = new MyFragment();
+                }
+
+                //创建Bundle对象并传入数据
+                Bundle bundle = new Bundle();
+                bundle.putString("info", "这里是向Fragment传递的数据");
+                myfragment.setArguments(bundle);
+                transaction.add(R.id.my_framelayout, myfragment);
+                transaction.show(myfragment);
+                transaction.commit();
                 Toast.makeText(MainActivity.this,"dianjiale ",Toast.LENGTH_SHORT).show();
             }
         });
